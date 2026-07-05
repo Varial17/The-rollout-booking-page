@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book a call | The Rollout</title>
+  <meta name="description" content="Book a free 20 minute call with Daniel, founder of The Rollout. We look at your business and find the one to three things worth automating first.">
+  <meta name="robots" content="noindex">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #F8F4F0;          /* page background, warm cream */
+      --primary: #7BB5A8;     /* sage: buttons, accents */
+      --primary-hover: #6AA396;
+      --text: #000000;        /* text on background */
+      --text-on-primary: #FFFFFF;
+      --text-muted: #4B4B4B;
+      --border: #E5E7EB;
+      --radius: 6px;
+      --card: #FFFFFF;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, Arial, sans-serif;
+      font-size: 1.0625rem;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    h1, h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      line-height: 1.2;
+      font-weight: 700;
+    }
+
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 3rem 1.25rem 0;
+    }
+
+    section {
+      margin-bottom: 3.5rem;
+    }
+
+    /* 1. Hero */
+    .hero h1 {
+      font-size: 2rem;
+      margin-bottom: 0.875rem;
+    }
+
+    .hero .sub {
+      color: var(--text-muted);
+      font-size: 1.125rem;
+    }
+
+    /* 2. The pitch */
+    .pitch blockquote {
+      border-left: 3px solid var(--primary);
+      padding-left: 1.25rem;
+    }
+
+    .pitch blockquote p {
+      margin-bottom: 1rem;
+    }
+
+    .pitch blockquote p:last-of-type {
+      margin-bottom: 1.25rem;
+    }
+
+    .pitch cite {
+      font-style: normal;
+      color: var(--text-muted);
+      font-size: 0.9375rem;
+      display: block;
+    }
+
+    .pitch cite strong {
+      color: var(--text);
+    }
+
+    /* Shared section headings */
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.875rem;
+    }
+
+    /* 4. Booking */
+    .booking .sub {
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .booking-embed {
+      width: 100%;
+    }
+
+    .booking-embed iframe {
+      display: block;
+      width: 100%;
+      min-height: 700px;
+      border: 0;
+      border-radius: var(--radius);
+    }
+
+    .booking-fallback {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem 1.25rem;
+      text-align: center;
+      color: var(--text-muted);
+    }
+
+    /* 5. Social proof */
+    .proof-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .proof-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem 1.25rem;
+    }
+
+    .proof-card blockquote p {
+      margin-bottom: 0.875rem;
+    }
+
+    .proof-card cite {
+      font-style: normal;
+      font-weight: 600;
+      font-size: 0.9375rem;
+    }
+
+    .stat-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: baseline;
+      gap: 0.5rem 1.5rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9375rem;
+    }
+
+    .stat-row strong {
+      color: var(--text);
+      font-size: 1.25rem;
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+
+    .stat-row .dot {
+      color: var(--primary);
+    }
+
+    /* 6. Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 4rem;
+      padding: 2rem 1.25rem 2.5rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9375rem;
+    }
+
+    footer .footer-inner {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    footer p:first-child {
+      margin-bottom: 1rem;
+    }
+
+    footer small {
+      font-size: 0.8125rem;
+      letter-spacing: 0.02em;
+    }
+
+    /* Links and focus states */
+    a {
+      color: var(--primary-hover);
+      text-underline-offset: 2px;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--primary);
+      outline-offset: 2px;
+      border-radius: var(--radius);
+    }
+
+    /* Buttons, in case a link-style CTA is ever added near the embed */
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: var(--text-on-primary);
+      border: 0;
+      border-radius: var(--radius);
+      padding: 0.875rem 1.5rem;
+      min-height: 44px;
+      font-family: 'Inter', -apple-system, Arial, sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: var(--primary-hover);
+    }
+
+    /* Desktop: same single column, just more breathing room */
+    @media (min-width: 640px) {
+      main {
+        padding-top: 4.5rem;
+      }
+
+      .hero h1 {
+        font-size: 2.625rem;
+      }
+
+      .hero .sub {
+        font-size: 1.25rem;
+      }
+
+      h2 {
+        font-size: 1.75rem;
+      }
+
+      .proof-card {
+        padding: 1.75rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+
+    <!-- 1. Hero -->
+    <section class="hero">
+      <h1 id="greeting">Let's talk about your business. <span aria-hidden="true">👋</span></h1>
+      <p class="sub" id="stage-line">Let's find the one or two things in your business worth automating first.</p>
+    </section>
+
+    <!-- 2. The pitch -->
+    <section class="pitch" aria-label="Why this call exists">
+      <blockquote>
+        <p>I started The Rollout because most founders I talk to are sitting on 10+ hours of manual work a week that could be automated. They just don't know where to start.</p>
+        <p>Every issue I publish is a real case study of a business that found that bottleneck and fixed it. This call is the same thing, pointed straight at your business.</p>
+        <cite><strong>Daniel, founder of The Rollout</strong> (and Phlo, the team that builds this stuff)</cite>
+      </blockquote>
+    </section>
+
+    <!-- 3. How the call works -->
+    <section class="how">
+      <h2>Here's how it works</h2>
+      <p>Twenty minutes. Free. No pitch deck. I'll have read your answers before we talk, so we skip the small talk. We look at your business, and I tell you the one to three things I'd automate first. If it's a fit to build together, great. If not, you walk away with a plan you can run yourself.</p>
+    </section>
+
+    <!-- 4. Booking -->
+    <section class="booking">
+      <h2>Grab a time that works</h2>
+      <p class="sub">Pick a slot below. I read every response myself, so I'll know your business before we hop on.</p>
+
+      <div class="booking-embed" id="booking-embed">
+        <!-- ICLOSE EMBED: paste the iClose iframe/script here. Make it width:100%, min-height ~700px, border:0, border-radius:var(--radius).
+
+             PREFILL: if the iClose embed supports prefill query params, append them to the iframe src.
+             The visitor's sanitised first name is available as window.rolloutPrefill.name
+             (and any ?email= param as window.rolloutPrefill.email). For example:
+
+               <iframe src="https://YOUR-ICLOSE-URL?first_name=" id="iclose-frame" ...></iframe>
+               <script>
+                 var f = document.getElementById('iclose-frame');
+                 f.src += encodeURIComponent(window.rolloutPrefill.name || '');
+               </script>
+        -->
+        <div class="booking-fallback">
+          <p>The booking calendar loads here. If you can't see it, refresh the page.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Social proof -->
+    <section class="proof">
+      <h2>Businesses I've already helped</h2>
+      <div class="proof-cards">
+        <article class="proof-card">
+          <blockquote>
+            <p>"The system streamlined our investor onboarding and internal operations. What used to require manual coordination is now structured, trackable, and far easier to manage."</p>
+            <cite>Hash Financial Group, Head of Operations</cite>
+          </blockquote>
+        </article>
+        <article class="proof-card">
+          <blockquote>
+            <p>"Real structure and pace on complex AI and automation projects. That makes delivery far more predictable."</p>
+            <cite>Sapien Group, Managing Director</cite>
+          </blockquote>
+        </article>
+        <article class="proof-card">
+          <blockquote>
+            <p>"A development partner from day one. Built the platform from the ground up and managed seven distinct products."</p>
+            <cite>Studyfin, Founder</cite>
+          </blockquote>
+        </article>
+        <article class="proof-card">
+          <blockquote>
+            <p>"Moved our clients from monthly reporting to daily engagement using a live dashboard and an internal AI built on their financial data. It's transformed how clients interact with their numbers."</p>
+            <cite>Craig Whitton, Managing Director, Real Balance</cite>
+          </blockquote>
+        </article>
+      </div>
+      <p class="stat-row">
+        <span><strong>3+ hrs</strong> saved per client per month</span>
+        <span class="dot" aria-hidden="true">&middot;</span>
+        <span><strong>24/7</strong> client access to live insights and AI</span>
+      </p>
+    </section>
+
+  </main>
+
+  <!-- 6. Footer -->
+  <footer>
+    <div class="footer-inner">
+      <p>The builds are done by Phlo, the team I run. The Rollout is where I write about how businesses are actually rolling AI out, every week.</p>
+      <small>&copy; PHLOING PTY LTD. All rights reserved.</small>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+
+      // Sanitise the name: strip anything that isn't a plain name character, cap at 30 chars.
+      function cleanName(raw) {
+        if (!raw) return '';
+        var name = raw.replace(/<[^>]*>/g, '');          // strip HTML tags
+        name = name.replace(/[^\p{L}\p{M}' .-]/gu, '');  // letters, apostrophes, spaces, dots, hyphens only
+        name = name.trim().slice(0, 30).trim();
+        return name;
+      }
+
+      var name = cleanName(params.get('name'));
+      var stage = (params.get('stage') || '').toLowerCase().trim();
+      var email = (params.get('email') || '').trim().slice(0, 254);
+
+      // Greeting. Built with createTextNode, so nothing in the URL can inject markup.
+      if (name) {
+        var h1 = document.getElementById('greeting');
+        h1.textContent = '';
+        h1.appendChild(document.createTextNode('Hey ' + name + ", let's talk about your business. "));
+        var wave = document.createElement('span');
+        wave.setAttribute('aria-hidden', 'true');
+        wave.textContent = '👋';
+        h1.appendChild(wave);
+      }
+
+      // Stage-based sub-headline.
+      var stageLines = {
+        live: "You're already rolling AI out. Let's find the next thing worth building.",
+        pilots: "You're testing things. Let's work out what's worth scaling.",
+        stuck: "You gave it a go and it stalled. Let's figure out why and fix it.",
+        tinkering: "Let's turn the tinkering into something that saves you real hours.",
+        researching: "Let's cut through the noise and find where AI actually fits for you."
+      };
+      if (stageLines[stage]) {
+        document.getElementById('stage-line').textContent = stageLines[stage];
+      }
+
+      // Expose sanitised values for the iClose embed prefill (see the ICLOSE EMBED comment above).
+      window.rolloutPrefill = { name: name, email: email };
+    })();
+  </script>
+</body>
+</html>
