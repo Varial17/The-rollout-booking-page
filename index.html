@@ -111,21 +111,16 @@
       width: 100%;
     }
 
+    .booking-embed .iclosed-widget {
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
     .booking-embed iframe {
       display: block;
       width: 100%;
-      min-height: 700px;
       border: 0;
       border-radius: var(--radius);
-    }
-
-    .booking-fallback {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 2rem 1.25rem;
-      text-align: center;
-      color: var(--text-muted);
     }
 
     /* 5. Social proof */
@@ -285,21 +280,12 @@
       <p class="sub">Pick a slot below. I read every response myself, so I'll know your business before we hop on.</p>
 
       <div class="booking-embed" id="booking-embed">
-        <!-- ICLOSE EMBED: paste the iClose iframe/script here. Make it width:100%, min-height ~700px, border:0, border-radius:var(--radius).
-
-             PREFILL: if the iClose embed supports prefill query params, append them to the iframe src.
-             The visitor's sanitised first name is available as window.rolloutPrefill.name
-             (and any ?email= param as window.rolloutPrefill.email). For example:
-
-               <iframe src="https://YOUR-ICLOSE-URL?first_name=" id="iclose-frame" ...></iframe>
-               <script>
-                 var f = document.getElementById('iclose-frame');
-                 f.src += encodeURIComponent(window.rolloutPrefill.name || '');
-               </script>
-        -->
-        <div class="booking-fallback">
-          <p>The booking calendar loads here. If you can't see it, refresh the page.</p>
-        </div>
+        <!-- iClosed inline widget begin -->
+        <div class="iclosed-widget" data-url="https://app.iclosed.io/e/Phlo/the-rollout" title="Find what to automate first" style="width: 100%; height: 620px"></div>
+        <!-- widget.js is loaded by the script at the bottom of the page, AFTER the
+             visitor's name/email from the URL are appended to data-url as
+             iclosedName / iclosedEmail, so the iClosed form arrives prefilled. -->
+        <!-- iClosed inline widget end -->
       </div>
     </section>
 
@@ -389,7 +375,27 @@
         document.getElementById('stage-line').textContent = stageLines[stage];
       }
 
-      // Expose sanitised values for the iClose embed prefill (see the ICLOSE EMBED comment above).
+      // Prefill the iClosed widget: append the visitor's sanitised name and email
+      // to the event URL as iclosedName / iclosedEmail before the widget loads.
+      // (iClosed reads these params and prefils the matching form fields.)
+      var widget = document.querySelector('.iclosed-widget');
+      if (widget) {
+        var prefill = [];
+        if (name) prefill.push('iclosedName=' + encodeURIComponent(name));
+        if (email) prefill.push('iclosedEmail=' + encodeURIComponent(email));
+        if (prefill.length) {
+          var base = widget.getAttribute('data-url');
+          widget.setAttribute('data-url', base + (base.indexOf('?') > -1 ? '&' : '?') + prefill.join('&'));
+        }
+      }
+
+      // Load the iClosed widget script now that data-url is final.
+      var s = document.createElement('script');
+      s.src = 'https://app.iclosed.io/assets/widget.js';
+      s.async = true;
+      document.body.appendChild(s);
+
+      // Expose sanitised values in case anything else needs them.
       window.rolloutPrefill = { name: name, email: email };
     })();
   </script>
