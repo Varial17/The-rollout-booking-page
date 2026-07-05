@@ -637,6 +637,14 @@
     (function () {
       var params = new URLSearchParams(window.location.search);
 
+      // beehiiv only substitutes {{email}} in form redirect URLs; other merge
+      // tags arrive as literal text like "{{first name}}". Treat any value that
+      // still contains braces as absent so the page falls back gracefully.
+      function getParam(key) {
+        var v = params.get(key) || '';
+        return (v.indexOf('{') > -1 || v.indexOf('}') > -1) ? '' : v;
+      }
+
       // Sanitise the name: strip anything that isn't a plain name character, cap at 30 chars.
       function cleanName(raw) {
         if (!raw) return '';
@@ -646,9 +654,9 @@
         return name;
       }
 
-      var name = cleanName(params.get('name'));
-      var stage = (params.get('stage') || '').toLowerCase().trim();
-      var email = (params.get('email') || '').trim().slice(0, 254);
+      var name = cleanName(getParam('name'));
+      var stage = getParam('stage').toLowerCase().trim();
+      var email = getParam('email').trim().slice(0, 254);
 
       // Eyebrow greeting. Built with createTextNode, so nothing in the URL can inject markup.
       if (name) {

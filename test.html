@@ -70,6 +70,11 @@
     <li><a href="/?name=Dan&stage=live&email=dan%40example.com">name + email<small>The iClosed form should open with name and email already filled</small></a></li>
   </ul>
 
+  <h2>Unresolved beehiiv tags</h2>
+  <ul>
+    <li><a href="/?name=%7B%7Bfirst+name%7D%7D&stage=%7B%7Bai+stage%7D%7D&email=test%40gmail.com">literal {{first name}} passed through<small>Must show the generic greeting, never "Hey first name". Email still prefills iClosed.</small></a></li>
+  </ul>
+
   <h2>Abuse check</h2>
   <ul>
     <li><a href="/?name=%3Cscript%3Ealert(1)%3C%2Fscript%3E&stage=live">script tag as name<small>Should render as harmless plain text, never a popup</small></a></li>
