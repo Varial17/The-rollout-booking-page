@@ -32,6 +32,7 @@
 
     html {
       -webkit-text-size-adjust: 100%;
+      scroll-behavior: smooth;
     }
 
     body {
@@ -52,7 +53,7 @@
     main {
       max-width: 720px;
       margin: 0 auto;
-      padding: 3rem 1.25rem 0;
+      padding: 2rem 1.25rem 0;
     }
 
     section {
@@ -60,14 +61,86 @@
     }
 
     /* 1. Hero */
+    .hero {
+      margin-bottom: 3rem;
+    }
+
+    .hero .eyebrow {
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 0.625rem;
+    }
+
     .hero h1 {
-      font-size: 2rem;
-      margin-bottom: 0.875rem;
+      font-size: 1.875rem;
+      margin-bottom: 0.75rem;
     }
 
     .hero .sub {
       color: var(--text-muted);
-      font-size: 1.125rem;
+      font-size: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero .btn {
+      width: 100%;
+      text-align: center;
+    }
+
+    .proof-strip {
+      margin-top: 1rem;
+      color: var(--text-muted);
+      font-size: 0.8125rem;
+      line-height: 1.8;
+    }
+
+    .proof-strip strong {
+      color: var(--text);
+    }
+
+    .proof-strip .dot {
+      color: var(--primary);
+      padding: 0 0.25rem;
+    }
+
+    /* Walkaway list */
+    .walkaway-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .walkaway-list li {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem 1.125rem;
+      font-size: 0.9375rem;
+    }
+
+    /* Selected work */
+    .work-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .work-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem 1.125rem;
+      font-size: 0.9375rem;
+    }
+
+    .work-card strong {
+      display: block;
+      margin-bottom: 0.125rem;
+    }
+
+    .work-card span {
+      color: var(--text-muted);
     }
 
     /* 2. The pitch */
@@ -229,7 +302,11 @@
     /* Desktop: same single column, just more breathing room */
     @media (min-width: 640px) {
       main {
-        padding-top: 4.5rem;
+        padding-top: 4rem;
+      }
+
+      .hero .eyebrow {
+        font-size: 1.125rem;
       }
 
       .hero h1 {
@@ -237,11 +314,36 @@
       }
 
       .hero .sub {
-        font-size: 1.25rem;
+        font-size: 1.125rem;
+        max-width: 34rem;
+      }
+
+      .hero .btn {
+        width: auto;
+      }
+
+      .proof-strip {
+        font-size: 0.875rem;
       }
 
       h2 {
         font-size: 1.75rem;
+      }
+
+      .walkaway-list {
+        flex-direction: row;
+      }
+
+      .walkaway-list li {
+        flex: 1;
+      }
+
+      .work-row {
+        flex-direction: row;
+      }
+
+      .work-card {
+        flex: 1;
       }
 
       .proof-card {
@@ -255,8 +357,21 @@
 
     <!-- 1. Hero -->
     <section class="hero">
-      <h1 id="greeting">Let's talk about your business. <span aria-hidden="true">👋</span></h1>
-      <p class="sub" id="stage-line">Let's find the one or two things in your business worth automating first.</p>
+      <p class="eyebrow" id="greeting">Hey <span aria-hidden="true">👋</span></p>
+      <h1 id="headline">Let's find the 10 hours a week hiding in your business.</h1>
+      <p class="sub">Book a free 20-minute call. I'll look at your business and show you the one to three things I'd automate first. No pitch, and you leave with a plan either way.</p>
+      <a class="btn" href="#book">Grab your free slot <span aria-hidden="true">&rarr;</span></a>
+      <p class="proof-strip"><strong>80%</strong> lower build costs <span class="dot" aria-hidden="true">&middot;</span> <strong>70%</strong> less manual work <span class="dot" aria-hidden="true">&middot;</span> <strong>8x</strong> faster delivery <span class="dot" aria-hidden="true">&middot;</span> <strong>3+ hrs</strong> saved per client / month</p>
+    </section>
+
+    <!-- 2. What you'll walk away with -->
+    <section class="walkaway">
+      <h2>What you'll walk away with</h2>
+      <ul class="walkaway-list">
+        <li>The one to three automations I'd build in your business first</li>
+        <li>A rough read on the time and money each would save</li>
+        <li>An honest answer on whether it's even worth doing</li>
+      </ul>
     </section>
 
     <!-- 2. The pitch -->
@@ -275,7 +390,7 @@
     </section>
 
     <!-- 4. Booking -->
-    <section class="booking">
+    <section class="booking" id="book">
       <h2>Grab a time that works</h2>
       <p class="sub">Pick a slot below. I read every response myself, so I'll know your business before we hop on.</p>
 
@@ -286,6 +401,25 @@
              visitor's name/email from the URL are appended to data-url as
              iclosedName / iclosedEmail, so the iClosed form arrives prefilled. -->
         <!-- iClosed inline widget end -->
+      </div>
+    </section>
+
+    <!-- Selected work -->
+    <section class="work">
+      <h2>Selected work</h2>
+      <div class="work-row">
+        <div class="work-card">
+          <strong>Saig</strong>
+          <span>Cut AI operations costs by 80%</span>
+        </div>
+        <div class="work-card">
+          <strong>Hash Financial Group</strong>
+          <span>Automated investor onboarding and KYC, faster deal flow</span>
+        </div>
+        <div class="work-card">
+          <strong>Studyfin</strong>
+          <span>Full-stack platform built from scratch, seven products managed</span>
+        </div>
       </div>
     </section>
 
@@ -352,27 +486,27 @@
       var stage = (params.get('stage') || '').toLowerCase().trim();
       var email = (params.get('email') || '').trim().slice(0, 254);
 
-      // Greeting. Built with createTextNode, so nothing in the URL can inject markup.
+      // Eyebrow greeting. Built with createTextNode, so nothing in the URL can inject markup.
       if (name) {
-        var h1 = document.getElementById('greeting');
-        h1.textContent = '';
-        h1.appendChild(document.createTextNode('Hey ' + name + ", let's talk about your business. "));
+        var eyebrow = document.getElementById('greeting');
+        eyebrow.textContent = '';
+        eyebrow.appendChild(document.createTextNode('Hey ' + name + ' '));
         var wave = document.createElement('span');
         wave.setAttribute('aria-hidden', 'true');
         wave.textContent = '👋';
-        h1.appendChild(wave);
+        eyebrow.appendChild(wave);
       }
 
-      // Stage-based sub-headline.
+      // Stage-based headline.
       var stageLines = {
-        live: "You're already rolling AI out. Let's find the next thing worth building.",
-        pilots: "You're testing things. Let's work out what's worth scaling.",
-        stuck: "You gave it a go and it stalled. Let's figure out why and fix it.",
-        tinkering: "Let's turn the tinkering into something that saves you real hours.",
-        researching: "Let's cut through the noise and find where AI actually fits for you."
+        live: "You're live with AI. Let's find the next 10 hours.",
+        pilots: "You're piloting AI. Let's find what's worth scaling.",
+        stuck: "You tried AI. It stalled. Let's get it working.",
+        tinkering: "You're tinkering with AI. Let's turn it into real hours saved.",
+        researching: "Let's skip the hype and find where AI actually pays off."
       };
       if (stageLines[stage]) {
-        document.getElementById('stage-line').textContent = stageLines[stage];
+        document.getElementById('headline').textContent = stageLines[stage];
       }
 
       // Prefill the iClosed widget: append the visitor's sanitised name and email
