@@ -49,19 +49,20 @@
   <p class="note">Every link opens the booking page with different URL params. Works on any domain this file is deployed to. This page is noindexed; delete it whenever you like.</p>
 
   <h2>Stage variants (with name)</h2>
+  <p class="note">The H1 is always the System Sprint invite. The stage changes the first sentence of the paragraph under it.</p>
   <ul>
-    <li><a href="/?name=Dan&stage=live">live<small>H1: You're live with AI. Let's find the next 10 hours.</small></a></li>
-    <li><a href="/?name=Dan&stage=pilots">pilots<small>H1: You're piloting AI. Let's find what's worth scaling.</small></a></li>
-    <li><a href="/?name=Dan&stage=stuck">stuck<small>H1: You tried AI. It stalled. Let's get it working.</small></a></li>
-    <li><a href="/?name=Dan&stage=tinkering">tinkering<small>H1: You're tinkering with AI. Let's turn it into real hours saved.</small></a></li>
-    <li><a href="/?name=Dan&stage=researching">researching<small>H1: Let's skip the hype and find where AI actually pays off.</small></a></li>
+    <li><a href="/?name=Dan&stage=live">live<small>Lead-in: You're already live with AI, so we'd focus on your next win.</small></a></li>
+    <li><a href="/?name=Dan&stage=pilots">pilots<small>Lead-in: You're already piloting AI, which is the perfect time for this.</small></a></li>
+    <li><a href="/?name=Dan&stage=stuck">stuck<small>Lead-in: You've already had a crack at AI, so let's make it pay off this time.</small></a></li>
+    <li><a href="/?name=Dan&stage=tinkering">tinkering<small>Lead-in: You're already tinkering with AI, so let's point it at real hours.</small></a></li>
+    <li><a href="/?name=Dan&stage=researching">researching<small>Lead-in: You're still weighing AI up, which is exactly the right time for this.</small></a></li>
   </ul>
 
   <h2>Fallbacks</h2>
   <ul>
-    <li><a href="/">no params at all<small>Eyebrow: Hey 👋, H1: Let's find the 10 hours a week hiding in your business.</small></a></li>
-    <li><a href="/?stage=live">stage only, no name<small>Eyebrow: Hey 👋, H1: the live headline</small></a></li>
-    <li><a href="/?name=Dan&stage=nonsense">unknown stage<small>Should fall back to the default H1</small></a></li>
+    <li><a href="/">no params at all<small>Eyebrow: Hey 👋, no lead-in sentence, sub starts at "The System Sprint is two calls."</small></a></li>
+    <li><a href="/?stage=live">stage only, no name<small>Eyebrow: Hey 👋, plus the live lead-in</small></a></li>
+    <li><a href="/?name=Dan&stage=nonsense">unknown stage<small>No lead-in sentence, default sub only</small></a></li>
   </ul>
 
   <h2>iClosed prefill</h2>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Book a call | The Rollout</title>
-  <meta name="description" content="Book a free 20 minute call with Daniel, founder of The Rollout. We look at your business and find the one to three things worth automating first.">
+  <meta name="description" content="Join the free System Sprint with Daniel, founder of The Rollout. Two calls: we diagnose your business, then show you the systems we'd build.">
   <meta name="robots" content="noindex">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -60,9 +60,47 @@
       margin-bottom: 3.5rem;
     }
 
+    /* Top bar */
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2.25rem;
+      gap: 1rem;
+    }
+
+    .wordmark {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 700;
+      font-size: 1.125rem;
+    }
+
+    .partner-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 0.375rem 0.75rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+
+    .partner-badge::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--primary);
+      flex-shrink: 0;
+    }
+
     /* 1. Hero */
     .hero {
-      margin-bottom: 3rem;
+      margin-bottom: 2.5rem;
     }
 
     .hero .eyebrow {
@@ -87,20 +125,62 @@
       text-align: center;
     }
 
-    .proof-strip {
+    .partner-note {
       margin-top: 1rem;
       color: var(--text-muted);
       font-size: 0.8125rem;
-      line-height: 1.8;
     }
 
-    .proof-strip strong {
+    /* Trust marquee: one row, items cycle horizontally */
+    .trust {
+      margin-bottom: 3rem;
+    }
+
+    .trust-marquee {
+      overflow: hidden;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 0.875rem 0;
+    }
+
+    .trust-track {
+      display: inline-flex;
+      white-space: nowrap;
+      width: max-content;
+      animation: trust-scroll 28s linear infinite;
+    }
+
+    .trust-item {
+      padding-right: 2.75rem;
+      color: var(--text-muted);
+      font-size: 0.875rem;
+    }
+
+    .trust-item strong {
       color: var(--text);
     }
 
-    .proof-strip .dot {
-      color: var(--primary);
-      padding: 0 0.25rem;
+    .trust-item .press {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 700;
+      color: var(--text);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-size: 0.9375rem;
+    }
+
+    @keyframes trust-scroll {
+      to { transform: translateX(-50%); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .trust-track {
+        animation: none;
+      }
+
+      .trust-marquee {
+        overflow-x: auto;
+      }
     }
 
     /* Walkaway list */
@@ -322,10 +402,6 @@
         width: auto;
       }
 
-      .proof-strip {
-        font-size: 0.875rem;
-      }
-
       h2 {
         font-size: 1.75rem;
       }
@@ -355,13 +431,38 @@
 <body>
   <main>
 
+    <!-- Top bar -->
+    <div class="topbar">
+      <span class="wordmark">The Rollout</span>
+      <!-- Swap this text badge for the official partner badge image when Anthropic supplies one -->
+      <span class="partner-badge">Claude Partner</span>
+    </div>
+
     <!-- 1. Hero -->
     <section class="hero">
       <p class="eyebrow" id="greeting">Hey <span aria-hidden="true">👋</span></p>
-      <h1 id="headline">Let's find the 10 hours a week hiding in your business.</h1>
-      <p class="sub">Book a free 20-minute call. I'll look at your business and show you the one to three things I'd automate first. No pitch, and you leave with a plan either way.</p>
-      <a class="btn" href="#book">Grab your free slot <span aria-hidden="true">&rarr;</span></a>
-      <p class="proof-strip"><strong>80%</strong> lower build costs <span class="dot" aria-hidden="true">&middot;</span> <strong>70%</strong> less manual work <span class="dot" aria-hidden="true">&middot;</span> <strong>8x</strong> faster delivery <span class="dot" aria-hidden="true">&middot;</span> <strong>3+ hrs</strong> saved per client / month</p>
+      <h1 id="headline">I think your business is a great fit for our free System Sprint.</h1>
+      <p class="sub"><span id="stage-note"></span>The System Sprint is two calls. On the first, we diagnose your business and find where the hours are hiding. On the second, we show you the solutions we'd build and what they'd save you. No pitch, and you keep the plan either way.</p>
+      <a class="btn" href="#book">Book call one <span aria-hidden="true">&rarr;</span></a>
+      <p class="partner-note">We've just joined the Claude Partner Network, so the System Sprint is free for Rollout readers right now.</p>
+    </section>
+
+    <!-- Trust strip -->
+    <section class="trust" aria-label="Press and results">
+      <div class="trust-marquee">
+        <div class="trust-track">
+          <span class="trust-item">As featured in <span class="press">The Australian Business Journal</span></span>
+          <span class="trust-item"><strong>80%</strong> lower build costs</span>
+          <span class="trust-item"><strong>70%</strong> less manual work</span>
+          <span class="trust-item"><strong>8x</strong> faster delivery</span>
+          <span class="trust-item"><strong>3+ hrs</strong> saved per client / month</span>
+          <span class="trust-item" aria-hidden="true">As featured in <span class="press">The Australian Business Journal</span></span>
+          <span class="trust-item" aria-hidden="true"><strong>80%</strong> lower build costs</span>
+          <span class="trust-item" aria-hidden="true"><strong>70%</strong> less manual work</span>
+          <span class="trust-item" aria-hidden="true"><strong>8x</strong> faster delivery</span>
+          <span class="trust-item" aria-hidden="true"><strong>3+ hrs</strong> saved per client / month</span>
+        </div>
+      </div>
     </section>
 
     <!-- 2. What you'll walk away with -->
@@ -385,13 +486,13 @@
 
     <!-- 3. How the call works -->
     <section class="how">
-      <h2>Here's how it works</h2>
-      <p>Twenty minutes. Free. No pitch deck. I'll have read your answers before we talk, so we skip the small talk. We look at your business, and I tell you the one to three things I'd automate first. If it's a fit to build together, great. If not, you walk away with a plan you can run yourself.</p>
+      <h2>Here's how the sprint works</h2>
+      <p>Two calls, both free. Call one is twenty minutes: I'll have read your answers before we talk, so we skip the small talk, look at your business, and find where the hours are hiding. Then my team maps out what we'd build. On call two, we walk you through the solutions and what they'd save you. If it's a fit to build together, great. If not, you keep the plan and run it yourself.</p>
     </section>
 
     <!-- 4. Booking -->
     <section class="booking" id="book">
-      <h2>Grab a time that works</h2>
+      <h2>Book call one</h2>
       <p class="sub">Pick a slot below. I read every response myself, so I'll know your business before we hop on.</p>
 
       <div class="booking-embed" id="booking-embed">
@@ -497,16 +598,16 @@
         eyebrow.appendChild(wave);
       }
 
-      // Stage-based headline.
-      var stageLines = {
-        live: "You're live with AI. Let's find the next 10 hours.",
-        pilots: "You're piloting AI. Let's find what's worth scaling.",
-        stuck: "You tried AI. It stalled. Let's get it working.",
-        tinkering: "You're tinkering with AI. Let's turn it into real hours saved.",
-        researching: "Let's skip the hype and find where AI actually pays off."
+      // Stage-based lead-in: a short, friendly first sentence for the sub-headline.
+      var stageNotes = {
+        live: "You're already live with AI, so we'd focus on your next win.",
+        pilots: "You're already piloting AI, which is the perfect time for this.",
+        stuck: "You've already had a crack at AI, so let's make it pay off this time.",
+        tinkering: "You're already tinkering with AI, so let's point it at real hours.",
+        researching: "You're still weighing AI up, which is exactly the right time for this."
       };
-      if (stageLines[stage]) {
-        document.getElementById('headline').textContent = stageLines[stage];
+      if (stageNotes[stage]) {
+        document.getElementById('stage-note').textContent = stageNotes[stage] + ' ';
       }
 
       // Prefill the iClosed widget: append the visitor's sanitised name and email
