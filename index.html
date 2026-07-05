@@ -75,27 +75,36 @@
       font-size: 1.125rem;
     }
 
-    .partner-badge {
+    .partner-logo {
       display: inline-flex;
       align-items: center;
-      gap: 0.375rem;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      padding: 0.375rem 0.75rem;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.02em;
+      gap: 0.5rem;
       white-space: nowrap;
     }
 
-    .partner-badge::before {
-      content: '';
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--primary);
+    .partner-logo svg {
+      width: 30px;
+      height: 30px;
       flex-shrink: 0;
+    }
+
+    .partner-logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+
+    .partner-logo-text .l1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .partner-logo-text .l2 {
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      color: var(--text-muted);
     }
 
     /* 1. Hero */
@@ -131,56 +140,97 @@
       font-size: 0.8125rem;
     }
 
-    /* Trust marquee: one row, items cycle horizontally */
-    .trust {
-      margin-bottom: 3rem;
+    /* Reviews: swipeable row that auto-cycles until the visitor touches it */
+    .reviews-scroller {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      margin-bottom: 1.25rem;
     }
 
-    .trust-marquee {
+    .reviews-scroller::-webkit-scrollbar {
+      display: none;
+    }
+
+    .review-card {
+      flex: 0 0 85%;
+      scroll-snap-align: start;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
       overflow: hidden;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 0.875rem 0;
     }
 
-    .trust-track {
-      display: inline-flex;
-      white-space: nowrap;
-      width: max-content;
-      animation: trust-scroll 28s linear infinite;
+    .review-head {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.875rem 1.125rem;
+      background: rgba(123, 181, 168, 0.14);
     }
 
-    .trust-item {
-      padding-right: 2.75rem;
+    .review-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: var(--text-on-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 0.9375rem;
+      flex-shrink: 0;
+    }
+
+    .review-head strong {
+      display: block;
+      font-size: 0.9375rem;
+    }
+
+    .review-head span {
       color: var(--text-muted);
-      font-size: 0.875rem;
+      font-size: 0.8125rem;
     }
 
-    .trust-item strong {
-      color: var(--text);
+    .review-body {
+      padding: 1rem 1.125rem 1.25rem;
     }
 
-    .trust-item .press {
+    .review-stars {
+      display: flex;
+      gap: 2px;
+      margin-bottom: 0.75rem;
+    }
+
+    .review-stars svg {
+      width: 18px;
+      height: 16px;
+      fill: var(--primary);
+    }
+
+    .review-body p {
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+    }
+
+    .press-line {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.8125rem;
+      margin-bottom: 0.625rem;
+    }
+
+    .press-line .press {
       font-family: 'Playfair Display', Georgia, serif;
       font-weight: 700;
       color: var(--text);
       text-transform: uppercase;
       letter-spacing: 0.04em;
-      font-size: 0.9375rem;
-    }
-
-    @keyframes trust-scroll {
-      to { transform: translateX(-50%); }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .trust-track {
-        animation: none;
-      }
-
-      .trust-marquee {
-        overflow-x: auto;
-      }
+      white-space: nowrap;
     }
 
     /* Walkaway list */
@@ -274,31 +324,6 @@
       width: 100%;
       border: 0;
       border-radius: var(--radius);
-    }
-
-    /* 5. Social proof */
-    .proof-cards {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      margin-bottom: 1.75rem;
-    }
-
-    .proof-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.5rem 1.25rem;
-    }
-
-    .proof-card blockquote p {
-      margin-bottom: 0.875rem;
-    }
-
-    .proof-card cite {
-      font-style: normal;
-      font-weight: 600;
-      font-size: 0.9375rem;
     }
 
     .stat-row {
@@ -422,8 +447,8 @@
         flex: 1;
       }
 
-      .proof-card {
-        padding: 1.75rem 1.5rem;
+      .review-card {
+        flex-basis: 320px;
       }
     }
   </style>
@@ -434,8 +459,22 @@
     <!-- Top bar -->
     <div class="topbar">
       <span class="wordmark">The Rollout</span>
-      <!-- Swap this text badge for the official partner badge image when Anthropic supplies one -->
-      <span class="partner-badge">Claude Partner</span>
+      <!-- Claude Partner Network mark, recreated as SVG in brand sage.
+           Swap for the official asset file if preferred: keep it ~30px tall. -->
+      <span class="partner-logo" role="img" aria-label="Claude Partner Network">
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="var(--primary)" stroke-width="2.4" stroke-linecap="round">
+          <line x1="12" y1="2.5" x2="12" y2="21.5"/>
+          <line x1="2.5" y1="12" x2="21.5" y2="12"/>
+          <line x1="5.3" y1="5.3" x2="18.7" y2="18.7"/>
+          <line x1="18.7" y1="5.3" x2="5.3" y2="18.7"/>
+          <line x1="3.8" y1="8.2" x2="20.2" y2="15.8"/>
+          <line x1="8.2" y1="20.2" x2="15.8" y2="3.8"/>
+        </svg>
+        <span class="partner-logo-text">
+          <span class="l1">Claude</span>
+          <span class="l2">Partner Network</span>
+        </span>
+      </span>
     </div>
 
     <!-- 1. Hero -->
@@ -447,22 +486,82 @@
       <p class="partner-note">We've just joined the Claude Partner Network, so the System Sprint is free for Rollout readers right now.</p>
     </section>
 
-    <!-- Trust strip -->
-    <section class="trust" aria-label="Press and results">
-      <div class="trust-marquee">
-        <div class="trust-track">
-          <span class="trust-item">As featured in <span class="press">The Australian Business Journal</span></span>
-          <span class="trust-item"><strong>80%</strong> lower build costs</span>
-          <span class="trust-item"><strong>70%</strong> less manual work</span>
-          <span class="trust-item"><strong>8x</strong> faster delivery</span>
-          <span class="trust-item"><strong>3+ hrs</strong> saved per client / month</span>
-          <span class="trust-item" aria-hidden="true">As featured in <span class="press">The Australian Business Journal</span></span>
-          <span class="trust-item" aria-hidden="true"><strong>80%</strong> lower build costs</span>
-          <span class="trust-item" aria-hidden="true"><strong>70%</strong> less manual work</span>
-          <span class="trust-item" aria-hidden="true"><strong>8x</strong> faster delivery</span>
-          <span class="trust-item" aria-hidden="true"><strong>3+ hrs</strong> saved per client / month</span>
-        </div>
+    <!-- Reviews -->
+    <section class="reviews" aria-label="Reviews">
+      <svg style="display:none" aria-hidden="true">
+        <symbol id="star" viewBox="0 0 22 20">
+          <path d="M10.525.464a.5.5 0 0 1 .95 0l2.107 6.482a.5.5 0 0 0 .475.346h6.817a.5.5 0 0 1 .294.904l-5.515 4.007a.5.5 0 0 0-.181.559l2.106 6.483a.5.5 0 0 1-.77.559l-5.514-4.007a.5.5 0 0 0-.588 0l-5.514 4.007a.5.5 0 0 1-.77-.56l2.106-6.482a.5.5 0 0 0-.181-.56L.832 8.197a.5.5 0 0 1 .294-.904h6.817a.5.5 0 0 0 .475-.346z"/>
+        </symbol>
+      </svg>
+      <h2>Reviews</h2>
+      <div class="reviews-scroller" id="reviews-scroller">
+        <article class="review-card">
+          <div class="review-head">
+            <span class="review-avatar" aria-hidden="true">HF</span>
+            <div>
+              <strong>Hash Financial Group</strong>
+              <span>Head of Operations</span>
+            </div>
+          </div>
+          <div class="review-body">
+            <div class="review-stars" aria-label="5 out of 5 stars">
+              <svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg>
+            </div>
+            <p>"The system streamlined our investor onboarding and internal operations. What used to require manual coordination is now structured, trackable, and far easier to manage."</p>
+          </div>
+        </article>
+        <article class="review-card">
+          <div class="review-head">
+            <span class="review-avatar" aria-hidden="true">SG</span>
+            <div>
+              <strong>Sapien Group</strong>
+              <span>Managing Director</span>
+            </div>
+          </div>
+          <div class="review-body">
+            <div class="review-stars" aria-label="5 out of 5 stars">
+              <svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg>
+            </div>
+            <p>"Real structure and pace on complex AI and automation projects. That makes delivery far more predictable."</p>
+          </div>
+        </article>
+        <article class="review-card">
+          <div class="review-head">
+            <span class="review-avatar" aria-hidden="true">SF</span>
+            <div>
+              <strong>Studyfin</strong>
+              <span>Founder</span>
+            </div>
+          </div>
+          <div class="review-body">
+            <div class="review-stars" aria-label="5 out of 5 stars">
+              <svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg>
+            </div>
+            <p>"A development partner from day one. Built the platform from the ground up and managed seven distinct products."</p>
+          </div>
+        </article>
+        <article class="review-card">
+          <div class="review-head">
+            <span class="review-avatar" aria-hidden="true">CW</span>
+            <div>
+              <strong>Craig Whitton</strong>
+              <span>Managing Director, Real Balance</span>
+            </div>
+          </div>
+          <div class="review-body">
+            <div class="review-stars" aria-label="5 out of 5 stars">
+              <svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg>
+            </div>
+            <p>"Moved our clients from monthly reporting to daily engagement using a live dashboard and an internal AI built on their financial data. It's transformed how clients interact with their numbers."</p>
+          </div>
+        </article>
       </div>
+      <p class="press-line">As featured in <span class="press">The Australian Business Journal</span></p>
+      <p class="stat-row">
+        <span><strong>3+ hrs</strong> saved per client per month</span>
+        <span class="dot" aria-hidden="true">&middot;</span>
+        <span><strong>24/7</strong> client access to live insights and AI</span>
+      </p>
     </section>
 
     <!-- 2. What you'll walk away with -->
@@ -524,42 +623,6 @@
       </div>
     </section>
 
-    <!-- 5. Social proof -->
-    <section class="proof">
-      <h2>Businesses I've already helped</h2>
-      <div class="proof-cards">
-        <article class="proof-card">
-          <blockquote>
-            <p>"The system streamlined our investor onboarding and internal operations. What used to require manual coordination is now structured, trackable, and far easier to manage."</p>
-            <cite>Hash Financial Group, Head of Operations</cite>
-          </blockquote>
-        </article>
-        <article class="proof-card">
-          <blockquote>
-            <p>"Real structure and pace on complex AI and automation projects. That makes delivery far more predictable."</p>
-            <cite>Sapien Group, Managing Director</cite>
-          </blockquote>
-        </article>
-        <article class="proof-card">
-          <blockquote>
-            <p>"A development partner from day one. Built the platform from the ground up and managed seven distinct products."</p>
-            <cite>Studyfin, Founder</cite>
-          </blockquote>
-        </article>
-        <article class="proof-card">
-          <blockquote>
-            <p>"Moved our clients from monthly reporting to daily engagement using a live dashboard and an internal AI built on their financial data. It's transformed how clients interact with their numbers."</p>
-            <cite>Craig Whitton, Managing Director, Real Balance</cite>
-          </blockquote>
-        </article>
-      </div>
-      <p class="stat-row">
-        <span><strong>3+ hrs</strong> saved per client per month</span>
-        <span class="dot" aria-hidden="true">&middot;</span>
-        <span><strong>24/7</strong> client access to live insights and AI</span>
-      </p>
-    </section>
-
   </main>
 
   <!-- 6. Footer -->
@@ -608,6 +671,25 @@
       };
       if (stageNotes[stage]) {
         document.getElementById('stage-note').textContent = stageNotes[stage] + ' ';
+      }
+
+      // Reviews auto-cycle: advance one card every few seconds until the visitor
+      // interacts, then hand over control (it stays a normal swipeable row).
+      var scroller = document.getElementById('reviews-scroller');
+      if (scroller && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        var userTookOver = false;
+        ['pointerdown', 'wheel', 'touchstart'].forEach(function (ev) {
+          scroller.addEventListener(ev, function () { userTookOver = true; }, { passive: true });
+        });
+        setInterval(function () {
+          if (userTookOver) return;
+          var card = scroller.querySelector('.review-card');
+          if (!card) return;
+          var step = card.offsetWidth + 16;
+          var max = scroller.scrollWidth - scroller.clientWidth;
+          var next = scroller.scrollLeft + step;
+          scroller.scrollTo({ left: next > max + 8 ? 0 : Math.min(next, max), behavior: 'smooth' });
+        }, 4000);
       }
 
       // Prefill the iClosed widget: append the visitor's sanitised name and email
