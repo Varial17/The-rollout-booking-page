@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test links | The Rollout</title>
+  <meta name="robots" content="noindex">
+  <style>
+    :root {
+      --bg: #F8F4F0;
+      --primary: #7BB5A8;
+      --text: #000000;
+      --text-muted: #4B4B4B;
+      --border: #E5E7EB;
+      --radius: 6px;
+      --card: #FFFFFF;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, Arial, sans-serif;
+      line-height: 1.6;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem;
+    }
+    h1 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+    p.note { color: var(--text-muted); margin-bottom: 2rem; font-size: 0.9375rem; }
+    h2 { font-size: 1.125rem; margin: 1.75rem 0 0.75rem; }
+    ul { list-style: none; }
+    li { margin-bottom: 0.5rem; }
+    a {
+      display: block;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.75rem 1rem;
+      min-height: 44px;
+      color: var(--text);
+      text-decoration: none;
+    }
+    a:hover { border-color: var(--primary); }
+    a small { color: var(--text-muted); display: block; font-size: 0.8125rem; }
+  </style>
+</head>
+<body>
+  <h1>Booking page test links</h1>
+  <p class="note">Every link opens the booking page with different URL params. Works on any domain this file is deployed to. This page is noindexed; delete it whenever you like.</p>
+
+  <h2>Stage variants (with name)</h2>
+  <ul>
+    <li><a href="/?name=Dan&stage=live">live<small>You're already rolling AI out. Let's find the next thing worth building.</small></a></li>
+    <li><a href="/?name=Dan&stage=pilots">pilots<small>You're testing things. Let's work out what's worth scaling.</small></a></li>
+    <li><a href="/?name=Dan&stage=stuck">stuck<small>You gave it a go and it stalled. Let's figure out why and fix it.</small></a></li>
+    <li><a href="/?name=Dan&stage=tinkering">tinkering<small>Let's turn the tinkering into something that saves you real hours.</small></a></li>
+    <li><a href="/?name=Dan&stage=researching">researching<small>Let's cut through the noise and find where AI actually fits for you.</small></a></li>
+  </ul>
+
+  <h2>Fallbacks</h2>
+  <ul>
+    <li><a href="/">no params at all<small>Generic greeting + default sub-headline</small></a></li>
+    <li><a href="/?stage=live">stage only, no name<small>Generic greeting + live sub-headline</small></a></li>
+    <li><a href="/?name=Dan&stage=nonsense">unknown stage<small>Should fall back to the default sub-headline</small></a></li>
+  </ul>
+
+  <h2>iClosed prefill</h2>
+  <ul>
+    <li><a href="/?name=Dan&stage=live&email=dan%40example.com">name + email<small>The iClosed form should open with name and email already filled</small></a></li>
+  </ul>
+
+  <h2>Abuse check</h2>
+  <ul>
+    <li><a href="/?name=%3Cscript%3Ealert(1)%3C%2Fscript%3E&stage=live">script tag as name<small>Should render as harmless plain text, never a popup</small></a></li>
+    <li><a href="/?name=AVeryLongNameThatJustKeepsGoingAndGoingAndGoing&stage=live">30+ character name<small>Should be capped so the heading stays sane</small></a></li>
+  </ul>
+</body>
+</html>
