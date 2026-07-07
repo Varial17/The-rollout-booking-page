@@ -164,20 +164,27 @@
       overflow: hidden;
     }
 
-    .review-head {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 0.875rem 1.125rem;
-      background: rgba(123, 181, 168, 0.14);
+    /* LinkedIn-style review cards, recreated 1:1 from the real screenshots */
+    .review-card {
+      font-family: -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+      background: #FFFFFF;
+      border-radius: 10px;
+      padding: 1rem 1.125rem 1.25rem;
     }
 
-    .review-avatar {
+    .li-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.625rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .li-avatar {
       width: 44px;
       height: 44px;
       border-radius: 50%;
-      background: var(--primary);
-      color: var(--text-on-primary);
+      background: #DCE6F1;
+      color: #56687A;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -186,35 +193,73 @@
       flex-shrink: 0;
     }
 
-    .review-head strong {
-      display: block;
-      font-size: 0.9375rem;
+    .li-id {
+      min-width: 0;
     }
 
-    .review-head span {
-      color: var(--text-muted);
+    .li-name {
+      display: block;
+      font-weight: 600;
+      font-size: 0.9375rem;
+      color: #191919;
+    }
+
+    .li-degree {
+      font-weight: 400;
+      color: #666666;
       font-size: 0.8125rem;
     }
 
-    .review-body {
-      padding: 1rem 1.125rem 1.25rem;
+    .li-headline {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      color: #666666;
+      font-size: 0.75rem;
+      line-height: 1.4;
     }
 
-    .review-stars {
+    .li-chip {
+      display: inline-block;
+      background: #EEF3F8;
+      color: #38434F;
+      border-radius: 4px;
+      padding: 0.25rem 0.625rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-bottom: 0.625rem;
+    }
+
+    .li-stars {
       display: flex;
+      align-items: center;
       gap: 2px;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.625rem;
     }
 
-    .review-stars svg {
-      width: 18px;
-      height: 16px;
-      fill: var(--primary);
+    .li-stars svg {
+      width: 17px;
+      height: 15px;
+      fill: #C9662A;
     }
 
-    .review-body p {
-      font-size: 0.9375rem;
-      color: var(--text-muted);
+    .li-score {
+      font-weight: 600;
+      font-size: 0.8125rem;
+      color: #191919;
+      margin-left: 0.25rem;
+    }
+
+    .li-date {
+      color: #666666;
+      font-size: 0.8125rem;
+    }
+
+    .li-text {
+      font-size: 0.875rem;
+      color: #333333;
+      line-height: 1.55;
     }
 
     .press-line {
@@ -496,49 +541,52 @@
       <h2>Reviews</h2>
       <div class="reviews-scroller" id="reviews-scroller">
         <article class="review-card">
-          <div class="review-head">
-            <span class="review-avatar" aria-hidden="true">MS</span>
-            <div>
-              <strong>Moushumi Sikand</strong>
-              <span>CFO for Purpose-Driven Businesses</span>
+          <div class="li-head">
+            <span class="li-avatar" aria-hidden="true">MS</span>
+            <div class="li-id">
+              <span class="li-name">Moushumi Sikand <span class="li-degree">&middot; 1st</span></span>
+              <span class="li-headline">CFO for Purpose-Driven Businesses | 20+ Yrs Experience | Helping Founders Gain Financial Clarity, Confidence &amp; Sustainable Profit | Winner of Xero Sole Practitioner of the year</span>
             </div>
           </div>
-          <div class="review-body">
-            <div class="review-stars" aria-label="5 out of 5 stars">
-              <svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg>
-            </div>
-            <p>"Daniel is very knowledgeable and passionate about providing great outcomes when it comes to automations and efficiency projects leveraging technology and AI. Strongly recommend."</p>
+          <span class="li-chip">IT Consulting</span>
+          <div class="li-stars" aria-label="Rated 5.0 out of 5">
+            <svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg>
+            <span class="li-score">5.0</span>
+            <span class="li-date">&middot; May 19, 2026</span>
           </div>
+          <p class="li-text">Daniel is very knowledgeable and passionate about providing great outcomes when it comes to automations and efficiency projects leveraging technology and Ai. Strongly recommend.</p>
         </article>
         <article class="review-card">
-          <div class="review-head">
-            <span class="review-avatar" aria-hidden="true">JR</span>
-            <div>
-              <strong>Justin Rigby</strong>
-              <span>Consultant, Corrosion Technologist (AMPP)</span>
+          <div class="li-head">
+            <span class="li-avatar" aria-hidden="true">JR</span>
+            <div class="li-id">
+              <span class="li-name">Justin Rigby <span class="li-degree">&middot; 1st</span></span>
+              <span class="li-headline">Consultant - Corrosion Technologist &amp; Senior Coatings Inspector (AMPP)</span>
             </div>
           </div>
-          <div class="review-body">
-            <div class="review-stars" aria-label="5 out of 5 stars">
-              <svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg>
-            </div>
-            <p>"Daniel has a great grasp on task management and how automation can be achieved. He is helpful and inquisitive, I expect he will soon be an industry leader. Grab him now while he is still available."</p>
+          <span class="li-chip">Custom Software Development</span>
+          <div class="li-stars" aria-label="Rated 5.0 out of 5">
+            <svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg>
+            <span class="li-score">5.0</span>
+            <span class="li-date">&middot; May 11, 2026</span>
           </div>
+          <p class="li-text">Daniel has a great grasp on task management and how automation can be achieved. His is helpful and inquisitive - I expect he will soon be an industry leader. Grab him now while he is still available.</p>
         </article>
         <article class="review-card">
-          <div class="review-head">
-            <span class="review-avatar" aria-hidden="true">CW</span>
-            <div>
-              <strong>Craig Whitton</strong>
-              <span>Consulting CFO, Real Balance Business Consulting</span>
+          <div class="li-head">
+            <span class="li-avatar" aria-hidden="true">CW</span>
+            <div class="li-id">
+              <span class="li-name">Craig Whitton <span class="li-degree">&middot; 1st</span></span>
+              <span class="li-headline">Growth &amp; Leadership Consulting Partner; Wingman; Mentor; Accountability Partner; Organisational Consulting; Outsourced Consulting CFO at Real Balance Business Consulting, Vocalist and Band Manager/Roadie</span>
             </div>
           </div>
-          <div class="review-body">
-            <div class="review-stars" aria-label="5 out of 5 stars">
-              <svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg>
-            </div>
-            <p>"Incredibly knowledgeable about apps and development. Has a clear strategic foresight of the project, not just its development. Easy to talk with and communicates tech matters in an easy to understand manner. Thanks mate for your support."</p>
+          <span class="li-chip">Custom Software Development</span>
+          <div class="li-stars" aria-label="Rated 5.0 out of 5">
+            <svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg>
+            <span class="li-score">5.0</span>
+            <span class="li-date">&middot; January 24, 2026</span>
           </div>
+          <p class="li-text">Incredibly knowledgeable about apps and development. Has a clear strategic foresight of the project, not just its development. Easy to talk with and communicates tech matters in an easy to understand manner. Thanks mate for your support</p>
         </article>
       </div>
       <p class="press-line">As featured in <span class="press">The Australian Business Journal</span></p>
