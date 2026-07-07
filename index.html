@@ -69,42 +69,14 @@
       gap: 1rem;
     }
 
-    .wordmark {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-weight: 700;
-      font-size: 1.125rem;
+    .brand-logo {
+      height: 38px;
+      width: auto;
     }
 
     .partner-logo {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      white-space: nowrap;
-    }
-
-    .partner-logo svg {
-      width: 30px;
-      height: 30px;
-      flex-shrink: 0;
-    }
-
-    .partner-logo-text {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.15;
-    }
-
-    .partner-logo-text .l1 {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-weight: 700;
-      font-size: 1rem;
-    }
-
-    .partner-logo-text .l2 {
-      font-size: 0.6875rem;
-      font-weight: 500;
-      letter-spacing: 0.01em;
-      color: var(--text-muted);
+      height: 34px;
+      width: auto;
     }
 
     /* 1. Hero */
@@ -143,6 +115,7 @@
     /* Reviews: swipeable row that auto-cycles until the visitor touches it */
     .reviews-scroller {
       display: flex;
+      align-items: flex-start;
       gap: 1rem;
       overflow-x: auto;
       scroll-snap-type: x mandatory;
@@ -164,102 +137,11 @@
       overflow: hidden;
     }
 
-    /* LinkedIn-style review cards, recreated 1:1 from the real screenshots */
+    /* Review cards are the actual LinkedIn screenshots */
     .review-card {
-      font-family: -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
-      background: #FFFFFF;
-      border-radius: 10px;
-      padding: 1rem 1.125rem 1.25rem;
-    }
-
-    .li-head {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.625rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .li-avatar {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: #DCE6F1;
-      color: #56687A;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 600;
-      font-size: 0.9375rem;
-      flex-shrink: 0;
-    }
-
-    .li-id {
-      min-width: 0;
-    }
-
-    .li-name {
       display: block;
-      font-weight: 600;
-      font-size: 0.9375rem;
-      color: #191919;
-    }
-
-    .li-degree {
-      font-weight: 400;
-      color: #666666;
-      font-size: 0.8125rem;
-    }
-
-    .li-headline {
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      color: #666666;
-      font-size: 0.75rem;
-      line-height: 1.4;
-    }
-
-    .li-chip {
-      display: inline-block;
-      background: #EEF3F8;
-      color: #38434F;
-      border-radius: 4px;
-      padding: 0.25rem 0.625rem;
-      font-size: 0.75rem;
-      font-weight: 600;
-      margin-bottom: 0.625rem;
-    }
-
-    .li-stars {
-      display: flex;
-      align-items: center;
-      gap: 2px;
-      margin-bottom: 0.625rem;
-    }
-
-    .li-stars svg {
-      width: 17px;
-      height: 15px;
-      fill: #C9662A;
-    }
-
-    .li-score {
-      font-weight: 600;
-      font-size: 0.8125rem;
-      color: #191919;
-      margin-left: 0.25rem;
-    }
-
-    .li-date {
-      color: #666666;
-      font-size: 0.8125rem;
-    }
-
-    .li-text {
-      font-size: 0.875rem;
-      color: #333333;
-      line-height: 1.55;
+      height: auto;
+      background: #FFFFFF;
     }
 
     .press-line {
@@ -503,23 +385,8 @@
 
     <!-- Top bar -->
     <div class="topbar">
-      <span class="wordmark">The Rollout</span>
-      <!-- Claude Partner Network mark, recreated as SVG in brand sage.
-           Swap for the official asset file if preferred: keep it ~30px tall. -->
-      <span class="partner-logo" role="img" aria-label="Claude Partner Network">
-        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="var(--primary)" stroke-width="2.4" stroke-linecap="round">
-          <line x1="12" y1="2.5" x2="12" y2="21.5"/>
-          <line x1="2.5" y1="12" x2="21.5" y2="12"/>
-          <line x1="5.3" y1="5.3" x2="18.7" y2="18.7"/>
-          <line x1="18.7" y1="5.3" x2="5.3" y2="18.7"/>
-          <line x1="3.8" y1="8.2" x2="20.2" y2="15.8"/>
-          <line x1="8.2" y1="20.2" x2="15.8" y2="3.8"/>
-        </svg>
-        <span class="partner-logo-text">
-          <span class="l1">Claude</span>
-          <span class="l2">Partner Network</span>
-        </span>
-      </span>
+      <img class="brand-logo" src="assets/rollout-logo.png" alt="The Rollout" width="600" height="200">
+      <img class="partner-logo" src="assets/claude-partner-logo.svg" alt="Claude Partner Network" width="365" height="115">
     </div>
 
     <!-- 1. Hero -->
@@ -533,61 +400,14 @@
 
     <!-- Reviews -->
     <section class="reviews" aria-label="Reviews">
-      <svg style="display:none" aria-hidden="true">
-        <symbol id="star" viewBox="0 0 22 20">
-          <path d="M10.525.464a.5.5 0 0 1 .95 0l2.107 6.482a.5.5 0 0 0 .475.346h6.817a.5.5 0 0 1 .294.904l-5.515 4.007a.5.5 0 0 0-.181.559l2.106 6.483a.5.5 0 0 1-.77.559l-5.514-4.007a.5.5 0 0 0-.588 0l-5.514 4.007a.5.5 0 0 1-.77-.56l2.106-6.482a.5.5 0 0 0-.181-.56L.832 8.197a.5.5 0 0 1 .294-.904h6.817a.5.5 0 0 0 .475-.346z"/>
-        </symbol>
-      </svg>
       <h2>Reviews</h2>
       <div class="reviews-scroller" id="reviews-scroller">
-        <article class="review-card">
-          <div class="li-head">
-            <span class="li-avatar" aria-hidden="true">MS</span>
-            <div class="li-id">
-              <span class="li-name">Moushumi Sikand <span class="li-degree">&middot; 1st</span></span>
-              <span class="li-headline">CFO for Purpose-Driven Businesses | 20+ Yrs Experience | Helping Founders Gain Financial Clarity, Confidence &amp; Sustainable Profit | Winner of Xero Sole Practitioner of the year</span>
-            </div>
-          </div>
-          <span class="li-chip">IT Consulting</span>
-          <div class="li-stars" aria-label="Rated 5.0 out of 5">
-            <svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg>
-            <span class="li-score">5.0</span>
-            <span class="li-date">&middot; May 19, 2026</span>
-          </div>
-          <p class="li-text">Daniel is very knowledgeable and passionate about providing great outcomes when it comes to automations and efficiency projects leveraging technology and Ai. Strongly recommend.</p>
-        </article>
-        <article class="review-card">
-          <div class="li-head">
-            <span class="li-avatar" aria-hidden="true">JR</span>
-            <div class="li-id">
-              <span class="li-name">Justin Rigby <span class="li-degree">&middot; 1st</span></span>
-              <span class="li-headline">Consultant - Corrosion Technologist &amp; Senior Coatings Inspector (AMPP)</span>
-            </div>
-          </div>
-          <span class="li-chip">Custom Software Development</span>
-          <div class="li-stars" aria-label="Rated 5.0 out of 5">
-            <svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg>
-            <span class="li-score">5.0</span>
-            <span class="li-date">&middot; May 11, 2026</span>
-          </div>
-          <p class="li-text">Daniel has a great grasp on task management and how automation can be achieved. His is helpful and inquisitive - I expect he will soon be an industry leader. Grab him now while he is still available.</p>
-        </article>
-        <article class="review-card">
-          <div class="li-head">
-            <span class="li-avatar" aria-hidden="true">CW</span>
-            <div class="li-id">
-              <span class="li-name">Craig Whitton <span class="li-degree">&middot; 1st</span></span>
-              <span class="li-headline">Growth &amp; Leadership Consulting Partner; Wingman; Mentor; Accountability Partner; Organisational Consulting; Outsourced Consulting CFO at Real Balance Business Consulting, Vocalist and Band Manager/Roadie</span>
-            </div>
-          </div>
-          <span class="li-chip">Custom Software Development</span>
-          <div class="li-stars" aria-label="Rated 5.0 out of 5">
-            <svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg>
-            <span class="li-score">5.0</span>
-            <span class="li-date">&middot; January 24, 2026</span>
-          </div>
-          <p class="li-text">Incredibly knowledgeable about apps and development. Has a clear strategic foresight of the project, not just its development. Easy to talk with and communicates tech matters in an easy to understand manner. Thanks mate for your support</p>
-        </article>
+        <img class="review-card" src="assets/review-moushumi.jpg" width="767" height="301" loading="lazy"
+             alt="LinkedIn review from Moushumi Sikand, CFO for Purpose-Driven Businesses, rated 5.0 stars: Daniel is very knowledgeable and passionate about providing great outcomes when it comes to automations and efficiency projects leveraging technology and AI. Strongly recommend.">
+        <img class="review-card" src="assets/review-justin.jpg" width="766" height="294" loading="lazy"
+             alt="LinkedIn review from Justin Rigby, Consultant, Corrosion Technologist and Senior Coatings Inspector, rated 5.0 stars: Daniel has a great grasp on task management and how automation can be achieved. He is helpful and inquisitive, I expect he will soon be an industry leader. Grab him now while he is still available.">
+        <img class="review-card" src="assets/review-craig.jpg" width="764" height="342" loading="lazy"
+             alt="LinkedIn review from Craig Whitton, Consulting CFO at Real Balance Business Consulting, rated 5.0 stars: Incredibly knowledgeable about apps and development. Has a clear strategic foresight of the project, not just its development. Easy to talk with and communicates tech matters in an easy to understand manner. Thanks mate for your support.">
       </div>
       <p class="press-line">As featured in <span class="press">The Australian Business Journal</span></p>
       <p class="stat-row">
